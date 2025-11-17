@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丑杨佳伦 - 团团云技术有限公司CEO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+        :root {
+            --primary: #3a86ff; --secondary: #8338ec; --accent: #ff006e;
+            --dark: #0a0e17; --darker: #050811; --light: #f8f9fa;
+            --card-bg: rgba(15, 23, 42, 0.7); --text-primary: #ffffff; --text-secondary: #c7d2fe;
+        }
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark), var(--darker));
+            color: var(--text-primary); line-height: 1.6; overflow-x: hidden;
+            min-height: 100vh; position: relative; font-size: 16px;
+        }
+        .particles-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2; overflow: hidden;
+        }
+        .particle {
+            position: absolute; background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%; animation: float 20s infinite linear;
+        }
+        .glow-effect {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; filter: blur(40px);
+            background: radial-gradient(circle at 20% 30%, rgba(58, 134, 255, 0.15) 0%, transparent 40%),
+                       radial-gradient(circle at 80% 70%, rgba(131, 56, 236, 0.15) 0%, transparent 40%);
+            animation: glowPulse 15s ease-in-out infinite alternate;
+        }
+        @keyframes glowPulse { 0% { opacity: 0.3; transform: scale(1); } 100% { opacity: 0.7; transform: scale(1.1); } }
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; } 90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+        .container { max-width: 100%; margin: 0 auto; padding: 20px; animation: fadeIn 1.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .header {
+            text-align: center; padding: 40px 20px; position: relative; overflow: hidden;
+            margin-bottom: 30px; border-radius: 20px; background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); animation: slideInDown 1s ease-out;
+        }
+        @keyframes slideInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+        .profile-img {
+            width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex; align-items: center; justify-content: center; font-size: 50px;
+            color: white; border: 3px solid rgba(255, 255, 255, 0.2);
+            animation: pulse 2s infinite, rotate 20s linear infinite;
+            box-shadow: 0 0 30px rgba(58, 134, 255, 0.5); position: relative; overflow: hidden;
+        }
+        .profile-img::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg); animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(58, 134, 255, 0.7); transform: scale(1); }
+            50% { transform: scale(1.05); }
+            70% { box-shadow: 0 0 0 15px rgba(58, 134, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(58, 134, 255, 0); transform: scale(1); }
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        .name {
+            font-size: 2.2rem; font-weight: 700; margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: slideIn 1s ease-out; text-shadow: 0 0 10px rgba(58, 134, 255, 0.3);
+            position: relative; display: inline-block;
+        }
+        .name::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            animation: expandWidth 2s ease-out 1s forwards;
+        }
+        @keyframes expandWidth { to { width: 100%; } }
+        .card {
+            background: var(--card-bg); backdrop-filter: blur(10px); border-radius: 16px;
+            padding: 25px; margin-bottom: 25px; border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out; position: relative; overflow: hidden;
+        }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.7s;
+        }
+        .card:hover::before { left: 100%; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-title {
+            font-size: 1.4rem; margin-bottom: 20px; color: #93c5fd;
+            display: flex; align-items: center; gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px;
+        }
+        .card-title i { color: var(--primary); animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .info-grid { display: grid; gap: 15px; }
+        .info-item {
+            display: flex; justify-content: space-between; padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease;
+        }
+        .info-item:hover {
+            background: rgba(255, 255, 255, 0.05); border-radius: 8px;
+            padding-left: 10px; padding-right: 10px; transform: translateX(5px);
+        }
+        .info-label { color: var(--text-secondary); font-weight: 500; display: flex; align-items: center; gap: 8px; }
+        .info-value { color: var(--text-primary); text-align: right; font-weight: 400; }
+        .flip-card { perspective: 1000px; margin-bottom: 25px; height: 200px; }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.8s; transform-style: preserve-3d; border-radius: 16px; cursor: pointer;
+        }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden;
+            backface-visibility: hidden; border-radius: 16px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; padding: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .flip-card-front { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+        .flip-card-back { background: linear-gradient(135deg, var(--secondary), var(--accent)); color: white; transform: rotateY(180deg); }
+        .contact-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .contact-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px;
+            background: linear-gradient(45deg, var(--primary), #6366f1); color: white; text-decoration: none;
+            border-radius: 12px; font-weight: 500; transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .contact-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .contact-btn:hover::before { left: 100%; }
+        .contact-btn:hover { transform: translateY(-3px); box-shadow: 0 7px 15px rgba(59, 130, 246, 0.4); }
+        .contact-btn.email { background: linear-gradient(45deg, #10b981, #059669); }
+        .contact-btn.email:hover { box-shadow: 0 7px 15px rgba(16, 185, 129, 0.4); }
+        .skill-bar { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; margin-top: 5px; }
+        .skill-progress { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 4px; width: 0; transition: width 1.5s ease-in-out; }
+        .timeline { position: relative; padding-left: 30px; margin-top: 20px; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 2px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); }
+        .timeline-item { position: relative; margin-bottom: 25px; padding-bottom: 10px; }
+        .timeline-item::before { content: ''; position: absolute; left: -36px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); border: 2px solid white; box-shadow: 0 0 10px var(--primary); }
+        .typewriter { overflow: hidden; border-right: 2px solid var(--primary); white-space: nowrap; margin: 0 auto; animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite; }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary) } }
+        .footer { text-align: center; padding: 30px 20px; color: #9ca3af; font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 20px; }
+        @media (max-width: 480px) {
+            .container { padding: 15px; } .header { padding: 30px 15px; } .name { font-size: 1.8rem; }
+            .title { font-size: 1.1rem; } .card { padding: 20px; } .contact-buttons { grid-template-columns: 1fr; }
+            .info-item { flex-direction: column; gap: 5px; } .info-value { text-align: left; } .flip-card { height: 180px; }
+        }
+        @media (max-width: 480px) and (min-aspect-ratio: 9/16) and (max-aspect-ratio: 9/18) {
+            body { font-size: 16px; } .header { padding: 40px 20px; } .container { padding: 20px; }
+            .profile-img { width: 100px; height: 100px; font-size: 40px; }
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, var(--primary), var(--secondary)); border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="particles-container" id="particles-container"></div>
+    <div class="glow-effect"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="profile-img"><i class="fas fa-user"></i></div>
+            <h1 class="name">丑杨佳伦</h1>
+            <p class="title typewriter">团团云技术有限公司 CEO / 总裁</p>
+            <div class="company"><i class="fas fa-building"></i><span>世界500强企业 | 科技互联网领导者</span></div>
+        </header>
+        
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front"><h3>丑杨佳伦</h3><p>团团云技术有限公司</p><p>CEO / 总裁</p></div>
+                <div class="flip-card-back"><h3>联系我</h3><p>电话: 15353435027</p><p>邮箱: 2730672916@qq.com</p></div>
+            </div>
+        </div>
+        
+        <section class="card">
+            <h2 class="card-title"><i class="fas fa-id-card"></i> 个人信息</h2>
+            <div class="info-grid">
+                <div class="info-item"><span class="info-label"><i class="fas fa-user"></i> 姓名</span><span class="info-value">丑杨佳伦</span></div>
+                <div class="info-item"><span class="info-label"><i class="fas fa-birthday-cake"></i> 出生日期</span><span class="info-value">2004年5月27日</span></div>
+                <div class="info-item"><span class="info-label"><i class="fas fa-flag"></i> 民族</span><span class="info-value">汉族</span></div>
+                <div class="info-item"><span class="info-label"><i class="fas fa-home"></i> 家庭住址</span><span class="info-value">陕西省渭南市富平县庄里镇竹园西区</span></div>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title"><i class="fas fa-briefcase"></i> 职业信息</h2>
+            <div class="info-grid">
+                <div class="info-item"><span class="info-label"><i class="fas fa-building"></i> 公司名称</span><span class="info-value">团团云技术有限公司</span></div>
+                <div class="info-item"><span class="info-label"><i class="fas fa-user-tie"></i> 职位</span><span class="info-value">CEO / 总裁</span></div>
+                <div class="info-item"><span class="info-label"><i class="fas fa-map-marker-alt"></i> 公司地址</span><span class="info-value">北京中关村</span></div>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title"><i class="fas fa-address-book"></i> 联系方式</h2>
+            <div class="info-grid">
+                <div class="info-item"><span class="info-label"><i class="fas fa-phone"></i> 联系电话</span><span class="info-value">15353435027</span></div>
+                <div class="info-item"><span class="info-label"><i class="fas fa-envelope"></i> 电子邮箱</span><span class="info-value">2730672916@qq.com</span></div>
+                <div class="info-item"><span class="info-label"><i class="fas fa-clock"></i> 最后更新</span><span class="info-value" id="current-date">2025年11月17日</span></div>
+            </div>
+            <div class="contact-buttons">
+                <a href="tel:15353435027" class="contact-btn"><i class="fas fa-phone"></i><span>拨打电话</span></a>
+                <a href="mailto:2730672916@qq.com" class="contact-btn email"><i class="fas fa-envelope"></i><span>发送邮件</span></a>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title"><i class="fas fa-chart-line"></i> 专业技能</h2>
+            <div class="skills-container">
+                <div class="skill"><div class="skill-info"><span>战略规划</span><span>95%</span></div><div class="skill-bar"><div class="skill-progress" data-width="95"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>团队领导</span><span>92%</span></div><div class="skill-bar"><div class="skill-progress" data-width="92"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>技术创新</span><span>88%</span></div><div class="skill-bar"><div class="skill-progress" data-width="88"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>业务发展</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" data-width="90"></div></div></div>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title"><i class="fas fa-graduation-cap"></i> 职业经历</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 至今</div>
+                    <div class="timeline-content"><h3>团团云技术有限公司 CEO/总裁</h3><p>领导公司战略规划，推动技术创新和数字化转型，带领公司跻身世界500强企业行列。</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2023</div>
+                    <div class="timeline-content"><h3>团团云技术有限公司 首席技术官</h3><p>负责公司技术战略制定和产品研发，推动多项创新技术落地应用。</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2021</div>
+                    <div class="timeline-content"><h3>某科技公司 技术总监</h3><p>带领技术团队完成多个重大项目，积累了丰富的管理经验。</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title"><i class="fas fa-award"></i> 个人成就</h2>
+            <div class="info-grid">
+                <div class="info-item" style="border-bottom: none; flex-direction: column; align-items: flex-start; gap: 15px;">
+                    <p style="text-align: justify; line-height: 1.8;">作为团团云技术有限公司的CEO兼总裁，凭借卓越的领导才能和前瞻性的战略眼光，带领公司实现跨越式发展，在科技互联网领域取得显著成就。</p>
+                    <div style="display: grid; gap: 10px; width: 100%;">
+                        <div style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-trophy" style="color: #fbbf24;"></i><span>2024年度科技行业领军人物</span></div>
+                        <div style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-trophy" style="color: #fbbf24;"></i><span>带领公司跻身世界500强企业</span></div>
+                        <div style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-trophy" style="color: #fbbf24;"></i><span>创新技术专利30余项</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>© 2025 团团云技术有限公司 版权所有</p>
+            <p style="margin-top: 5px;">专为移动设备优化 | 18:9屏幕比例适配</p>
+        </footer>
+    </div>
+
+    <script>
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-container');
+            const particleCount = Math.min(30, Math.floor(window.innerWidth / 20));
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 4 + 1;
+                const left = Math.random() * 100;
+                const animationDuration = Math.random() * 20 + 10;
+                const animationDelay = Math.random() * 10;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDuration = `${animationDuration}s`;
+                particle.style.animationDelay = `${animationDelay}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+        function initSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => { bar.style.width = `${width}%`; }, 500);
+            });
+        }
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('zh-CN', options);
+            document.getElementById('current-date').textContent = dateString;
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            initSkillBars();
+            updateCurrentDate();
+            const buttons = document.querySelectorAll('.contact-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        window.location.href = this.getAttribute('href');
+                    }, 200);
+                });
+            });
+        });
+        window.addEventListener('resize', function() {
+            const particlesContainer = document.getElementById('particles-container');
+            particlesContainer.innerHTML = '';
+            createParticles();
+        });
+    </script>
+</body>
+</html>
